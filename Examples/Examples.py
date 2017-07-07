@@ -44,3 +44,8 @@ for n in range(2, 100):
 
 
 
+# Functions
+def sumOf(a, b):
+    return a+b
+
+sumOf(1500, 15)
