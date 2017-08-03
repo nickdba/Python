@@ -42,16 +42,3 @@ for n in range(2, 100):
     else:
         print(n, end=' ')
 
-# Functions
-def sumOf(a=0, b=20):
-    '''Add two numbers together.
-
-    Both numbers need to be strings.
-    '''
-    return a+b
-
-sumOf(150, 15)
-
-f = sumOf
-f()
-f(10,20)
