@@ -1,35 +1,45 @@
 import json
+import entity as ent
 import pygame
 
-def player(x, y):
-    screen.blit(playerImg, (x, y))
 
+class Player(Entity):
+    pass
+    
+        
+    
 # Read the config.json 
 def get_configuration():
     with open('config.json') as file:
         conf = json.load(file)
     return conf        
 
-# Initialize the pygame
-pygame.init()
+# Initiate and draw the screen
+def init_screen(win_width, win_height):
 
-# Create the screen
+    # Initialize the pygame
+    pygame.init()
+
+    # Create the screen
+    screen = pygame.display.set_mode((win_width, win_height))
+
+    # Caption and icon
+    pygame.display.set_caption("Space Invaders")
+    icon = pygame.image.load("Resources/si_icon.png")
+    pygame.display.set_icon(icon)
+
+    return screen
+
+# Get Configuration
 conf = get_configuration()
-print(conf['window']['width'])
 win_width = int(conf['window']['width'])
 win_height = int(conf['window']['height'])
-screen = pygame.display.set_mode((win_width, win_height))
 
-# Caption and icon
-pygame.display.set_caption("Space Invaders")
-icon = pygame.image.load("Resources/si_icon.png")
-pygame.display.set_icon(icon)
+# Config Player
+player = Player(win_width/2, win_height*5/6)
 
-# Player image
-playerImg = pygame.image.load("Resources/si_player.png")
-playerX = win_width/2
-playerY = win_height*5/6
-movement = 0
+# Get the screen
+screen = init_screen(win_width, win_height)
 
 # Game Loop
 running = True
@@ -60,4 +70,5 @@ while running:
 
     screen.fill((0,0,0))
     player(playerX, playerY)
+    #invaders ()
     pygame.display.update()
